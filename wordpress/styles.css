@@ -1,6 +1,16 @@
 /* Paleta y base */
 :root{--bg:#0a0b0d;--fg:#e9edf0;--muted:#9aa3ab;--teal:#2dd4bf;--teal-weak:#14b8a6;--card:rgba(255,255,255,.05);--border:rgba(255,255,255,.10)}
-body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+html,body,.site,.wp-site-blocks,#page,#content,.site-content,.inside-article{background:var(--bg)!important;color:var(--fg)}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+
+/******** Tipografía ********/
+h1,h2,h3,h4,h5,h6{color:#ffffff}
+p,li,span{color:var(--fg)}
+a{color:var(--teal)}
+a:hover{color:var(--teal-weak)}
+
+/******** Contenedores GeneratePress ********/
+.site-main,.inside-article{background:transparent!important}
 
 /******** Botones y tarjetas ********/
 .btn-primary{background:var(--teal);color:#0b0e10;border-radius:12px;padding:.9rem 1.2rem;font-weight:600;transition:background .2s}
@@ -14,12 +24,12 @@ body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,R
 .text-muted{color:var(--muted)}
 
 /******** Hero decorativo ********/
-.hero-bg{background:radial-gradient(ellipse at 10% -10%, rgba(45,212,191,.15) 0%, rgba(10,11,13,0) 40%),radial-gradient(ellipse at 110% 110%, rgba(56,189,248,.12) 0%, rgba(10,11,13,0) 40%)}
+.hero-bg{background:radial-gradient(ellipse at 10% -10%, rgba(45,212,191,.15) 0%, rgba(10,11,13,0) 40%),radial-gradient(ellipse at 110% 110%, rgba(56,189,248,.12) 0%, rgba(10,11,13,0) 40%);background-color:var(--bg)!important}
 
 /******** FAQ acordeón simple (sin JS extra) ********/
 .faq details{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
 .faq details+details{margin-top:10px}
-.faq summary{cursor:pointer;font-weight:600}
+.faq summary{cursor:pointer;font-weight:600;color:#fff}
 
 /******** Botón flotante WhatsApp ********/
 .fab-wa{position:fixed;right:20px;bottom:20px;z-index:9999}
@@ -29,8 +39,8 @@ body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,R
 /******** Popup ligero ********/
 #lp-popup{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);z-index:9998}
 #lp-popup.open{display:flex}
-#lp-popup .modal{width:min(720px,92vw);background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:24px}
-#lp-popup .modal h3{margin:0 0 6px 0}
+#lp-popup .modal{width:min(720px,92vw);background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:24px;color:var(--fg)}
+#lp-popup .modal h3{margin:0 0 6px 0;color:#fff}
 #lp-popup .close-btn{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border);color:var(--fg);border-radius:10px;padding:6px 10px}
 
 @media (prefers-reduced-motion:no-preference){

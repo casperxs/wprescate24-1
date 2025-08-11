@@ -15,6 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 import { useToast } from "../hooks/use-toast";
 import { Shield, Zap, Wrench, Lock, AlertTriangle, Server, Gauge, ShieldAlert, Phone, Mail, Globe, CheckCircle2, MessageCircle } from "lucide-react";
 import { WHATSAPP_LINK } from "../config/contact";
+import QuickContactPopup from "../components/QuickContactPopup";
 
 const schema = z.object({
   nombre: z.string().min(2, "Ingresa tu nombre"),
@@ -36,6 +37,8 @@ export default function Landing() {
   const { toast } = useToast();
   const formRef = useRef(null);
   const [planPrefill, setPlanPrefill] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [popupPlan, setPopupPlan] = useState("");
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
@@ -71,9 +74,11 @@ export default function Landing() {
     }
   };
 
+  const openPopup = (plan) => { setPopupPlan(plan || ""); setPopupOpen(true); };
+
   const heroCtas = (
     <div className="flex flex-col sm:flex-row items-center gap-3 mt-6">
-      <Button className="bg-teal-500 hover:bg-teal-400 text-black font-semibold px-6 py-6" onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}>
+      <Button className="bg-teal-500 hover:bg-teal-400 text-black font-semibold px-6 py-6" onClick={() => openPopup() }>
         ¡Solicita ayuda ahora!
       </Button>
       <Button variant="outline" className="border-teal-500/40 text-white hover:bg-white/10" onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}>
@@ -108,7 +113,7 @@ export default function Landing() {
           </nav>
           <div className="flex items-center gap-2">
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="hidden md:inline text-sm text-teal-300 hover:text-teal-200">WhatsApp</a>
-            <Button className="bg-teal-500 hover:bg-teal-400 text-black font-semibold" onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}>Contacto</Button>
+            <Button className="bg-teal-500 hover:bg-teal-400 text-black font-semibold" onClick={() => openPopup()}>Contacto</Button>
           </div>
         </div>
       </header>
@@ -221,7 +226,7 @@ export default function Landing() {
                       <li key={f} className="flex items-start gap-2 text-sm"><CheckCircle2 className="w-4 h-4 text-teal-400 mt-0.5" /> {f}</li>
                     ))}
                   </ul>
-                  <Button className="mt-6 w-full bg-teal-500 hover:bg-teal-400 text-black font-semibold" onClick={() => { setPlanPrefill(p.id); document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" }); }}>Elegir {p.name}</Button>
+                  <Button className="mt-6 w-full bg-teal-500 hover:bg-teal-400 text-black font-semibold" onClick={() => { setPlanPrefill(p.id); openPopup(p.id); }}>Elegir {p.name}</Button>
                 </CardContent>
               </Card>
             ))}
@@ -370,18 +375,9 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Footer / CTA final */}
+      {/* Footer (solo copyright) */}
       <footer className="border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-6 items-center">
-          <div>
-            <h3 className="text-white text-xl font-semibold">¿Listo para recuperar tu sitio web?</h3>
-            <p className="text-foreground/80">Actuamos ya. El tiempo es clave para minimizar daños y pérdidas.</p>
-          </div>
-          <div className="flex md:justify-end">
-            <Button className="bg-teal-500 hover:bg-teal-400 text-black font-semibold" onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}>¡Contáctanos ahora!</Button>
-          </div>
-        </div>
-        <div className="max-w-6xl mx-auto px-6 py-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-xs text-foreground/60">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between text-xs text-foreground/60">
           <div>© {new Date().getFullYear()} Rescate WP. Todos los derechos reservados.</div>
           <div className="flex items-center gap-4 mt-3 md:mt-0">
             <RouterLink to="#" className="hover:text-foreground/90">Términos</RouterLink>
@@ -396,6 +392,9 @@ export default function Landing() {
           <MessageCircle className="w-7 h-7" />
         </div>
       </a>
+
+      {/* Quick popup */}
+      <QuickContactPopup open={popupOpen} onOpenChange={setPopupOpen} prefillPlan={popupPlan} onSubmitted={() => {}} />
     </div>
   );
 }

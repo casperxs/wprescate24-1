@@ -40,6 +40,30 @@ class StatusCheckCreate(BaseModel):
 async def root():
     return {"message": "Hello World"}
 
+from fastapi.responses import FileResponse, Response
+from starlette.responses import StreamingResponse
+import mimetypes
+
+@api_router.get("/download/react-build/{path:path}")
+async def download_build_file(path: str = ""):
+    base = "/app/deploy/react-build/build"
+    abs_path = os.path.normpath(os.path.join(base, path))
+    if not abs_path.startswith(base):
+        raise HTTPException(status_code=400, detail="Ruta inválida")
+    if os.path.isdir(abs_path):
+        # listar contenidos como simple index
+        try:
+            items = sorted(os.listdir(abs_path))
+            body = "\n".join(items)
+            return Response(content=body, media_type="text/plain")
+        except FileNotFoundError:
+            raise HTTPException(status_code=404, detail="No encontrado")
+    if not os.path.exists(abs_path):
+        raise HTTPException(status_code=404, detail="No encontrado")
+    ctype, _ = mimetypes.guess_type(abs_path)
+    return FileResponse(abs_path, media_type=ctype or "application/octet-stream")
+
+
 @api_router.get("/download/react-build")
 async def download_build():
     try:

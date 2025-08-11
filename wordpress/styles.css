@@ -1,0 +1,39 @@
+/* Paleta y base */
+:root{--bg:#0a0b0d;--fg:#e9edf0;--muted:#9aa3ab;--teal:#2dd4bf;--teal-weak:#14b8a6;--card:rgba(255,255,255,.05);--border:rgba(255,255,255,.10)}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+
+/******** Botones y tarjetas ********/
+.btn-primary{background:var(--teal);color:#0b0e10;border-radius:12px;padding:.9rem 1.2rem;font-weight:600;transition:background .2s}
+.btn-primary:hover{background:var(--teal-weak)}
+.btn-outline{background:transparent;color:var(--fg);border:1px solid var(--border);border-radius:12px;padding:.85rem 1.1rem}
+.card{background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:16px}
+
+/******** Secciones ********/
+.section-pad{padding:64px 0}
+.section-title{font-size:clamp(24px,2.4vw,32px);font-weight:700}
+.text-muted{color:var(--muted)}
+
+/******** Hero decorativo ********/
+.hero-bg{background:radial-gradient(ellipse at 10% -10%, rgba(45,212,191,.15) 0%, rgba(10,11,13,0) 40%),radial-gradient(ellipse at 110% 110%, rgba(56,189,248,.12) 0%, rgba(10,11,13,0) 40%)}
+
+/******** FAQ acordeón simple (sin JS extra) ********/
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
+.faq details+details{margin-top:10px}
+.faq summary{cursor:pointer;font-weight:600}
+
+/******** Botón flotante WhatsApp ********/
+.fab-wa{position:fixed;right:20px;bottom:20px;z-index:9999}
+.fab-wa a{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:999px;background:var(--teal);color:#0b0e10;border:1px solid rgba(45,212,191,.6);box-shadow:0 10px 24px rgba(0,0,0,.35);}
+.fab-wa a:hover{background:var(--teal-weak)}
+
+/******** Popup ligero ********/
+#lp-popup{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);z-index:9998}
+#lp-popup.open{display:flex}
+#lp-popup .modal{width:min(720px,92vw);background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:24px}
+#lp-popup .modal h3{margin:0 0 6px 0}
+#lp-popup .close-btn{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border);color:var(--fg);border-radius:10px;padding:6px 10px}
+
+@media (prefers-reduced-motion:no-preference){
+  .card, .btn-primary, .btn-outline{transition:transform .2s}
+  .card:hover{transform:translateY(-2px)}
+}

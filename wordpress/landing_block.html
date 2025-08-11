@@ -1,0 +1,210 @@
+<!-- INSTRUCCIONES
+1) Pega este bloque en Gutenberg (Editor de código) para crear la landing.
+2) Añade /app/wordpress/styles.css a Apariencia > Personalizar > CSS adicional.
+3) Crea el formulario con WPForms importando el JSON incluido más abajo (buscar "WPForms-JSON").
+4) Instala WPCode y pega el JS del popup en Snippet FOOTER (buscar "POPUP-JS").
+5) En WPCode Header/Body agrega los placeholders de Pixel/Ads cuando tengas los IDs.
+6) Activa WP Rocket y sigue el checklist (ver rocket_cloudflare_checklist.md).
+
+HERO IMAGEN RECOMENDADA (elige 1):
+- https://images.unsplash.com/photo-1654783912259-659d94fff000
+- https://images.unsplash.com/photo-1623410439361-22ac19216577
+- https://images.pexels.com/photos/11167645/pexels-photo-11167645.jpeg
+-->
+
+<!-- wp:group {"align":"full","className":"hero-bg","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull hero-bg" id="top">
+  <!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"}} -->
+  <div class="wp-block-group" style="padding-top:80px;padding-bottom:80px">
+    <!-- wp:columns {"verticalAlignment":"center"} -->
+    <div class="wp-block-columns are-vertically-aligned-center">
+      <!-- wp:column {"verticalAlignment":"center"} -->
+      <div class="wp-block-column is-vertically-aligned-center">
+        <!-- wp:paragraph {"fontSize":"small","textColor":"muted"} -->
+        <p class="has-muted-color has-text-color has-small-font-size">Recuperación en 24h garantizada</p>
+        <!-- /wp:paragraph -->
+        <!-- wp:heading {"level":1} -->
+        <h1>¿Tu sitio WordPress fue hackeado o está caído?</h1>
+        <!-- /wp:heading -->
+        <!-- wp:paragraph {"textColor":"muted"} -->
+        <p class="has-muted-color has-text-color">Micro‑agencia experta en rescate y blindaje. Volvemos a poner tu web en línea y la protegemos para que no vuelva a pasar.</p>
+        <!-- /wp:paragraph -->
+        <!-- wp:buttons -->
+        <div class="wp-block-buttons">
+          <!-- wp:button {"className":"btn-primary","metadata":{"bindings":{"attributes":{"url":{"source":"core/post-meta","args":{"metaKey":"_none"}}}}},"attr":{"data-action":"open-popup"}} -->
+          <div class="wp-block-button btn-primary" data-action="open-popup"><a class="wp-block-button__link wp-element-button">¡Solicita ayuda ahora!</a></div>
+          <!-- /wp:button -->
+          <!-- wp:button {"className":"btn-outline"} -->
+          <div class="wp-block-button btn-outline"><a class="wp-block-button__link wp-element-button" href="#pricing">Ver planes y precios</a></div>
+          <!-- /wp:button -->
+        </div>
+        <!-- /wp:buttons -->
+      </div>
+      <!-- /wp:column -->
+
+      <!-- wp:column {"verticalAlignment":"center"} -->
+      <div class="wp-block-column is-vertically-aligned-center">
+        <!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"card"} -->
+        <figure class="wp-block-image size-large card"><img src="https://images.unsplash.com/photo-1654783912259-659d94fff000" alt="Ilustración tecnológica"/></figure>
+        <!-- /wp:image -->
+      </div>
+      <!-- /wp:column -->
+    </div>
+    <!-- /wp:columns -->
+  </div>
+  <!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- STATS -->
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"},"className":"section-pad"} -->
+<div class="wp-block-group section-pad">
+  <!-- wp:columns -->
+  <div class="wp-block-columns">
+    <!-- wp:column --><div class="wp-block-column card" style="padding:16px;text-align:center"><h3>+200 sitios</h3><p class="text-muted">recuperados</p></div><!-- /wp:column -->
+    <!-- wp:column --><div class="wp-block-column card" style="padding:16px;text-align:center"><h3>24/7</h3><p class="text-muted">soporte</p></div><!-- /wp:column -->
+    <!-- wp:column --><div class="wp-block-column card" style="padding:16px;text-align:center"><h3>9h</h3><p class="text-muted">tiempo medio</p></div><!-- /wp:column -->
+    <!-- wp:column --><div class="wp-block-column card" style="padding:16px;text-align:center"><h3>98%</h3><p class="text-muted">satisfacción</p></div><!-- /wp:column -->
+  </div>
+  <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- PROBLEMAS -->
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"},"className":"section-pad","anchor":"problemas"} -->
+<div class="wp-block-group section-pad" id="problemas">
+  <h2 class="section-title">¿Tu sitio presenta estos problemas?</h2>
+  <!-- wp:columns -->
+  <div class="wp-block-columns" style="margin-top:24px">
+    <div class="wp-block-column card" style="padding:16px">Pantalla roja (malware)</div>
+    <div class="wp-block-column card" style="padding:16px">Sitio caído 500/404</div>
+    <div class="wp-block-column card" style="padding:16px">Rendimiento lento</div>
+    <div class="wp-block-column card" style="padding:16px">Ransomware / inyección</div>
+  </div>
+  <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- PROCESO -->
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"},"className":"section-pad","anchor":"proceso"} -->
+<div class="wp-block-group section-pad" id="proceso">
+  <h2 class="section-title">Cómo trabajamos</h2>
+  <!-- wp:columns -->
+  <div class="wp-block-columns" style="margin-top:24px">
+    <div class="wp-block-column card" style="padding:16px"><strong>1. Diagnóstico forense</strong><br/>Identificamos vectores de ataque y afectación.</div>
+    <div class="wp-block-column card" style="padding:16px"><strong>2. Recuperación express</strong><br/>Restauramos disponibilidad y limpiamos malware.</div>
+    <div class="wp-block-column card" style="padding:16px"><strong>3. Blindaje</strong><br/>Endurecemos WP, credenciales y WAF.</div>
+    <div class="wp-block-column card" style="padding:16px"><strong>4. Prevención</strong><br/>Checklist + monitoreo y recomendaciones.</div>
+  </div>
+  <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- PRECIOS -->
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"},"className":"section-pad","anchor":"pricing"} -->
+<div class="wp-block-group section-pad" id="pricing">
+  <h2 class="section-title">Planes y precios</h2>
+  <!-- wp:columns -->
+  <div class="wp-block-columns" style="margin-top:24px">
+    <div class="wp-block-column card" style="padding:20px"><h3>Bronce <span style="color:var(--teal)">$99</span></h3><p>Diagnóstico + informe.</p><ul><li>Diagnóstico 12h</li><li>Informe de vulnerabilidades</li><li>Plan de acción</li></ul><div class="wp-block-buttons"><div class="wp-block-button btn-primary" data-action="open-popup"><a class="wp-block-button__link wp-element-button">Elegir Bronce</a></div></div></div>
+    <div class="wp-block-column card" style="padding:20px"><h3>Plata <span style="color:var(--teal)">$249</span></h3><p>Recuperación + blindaje básico.</p><ul><li>Limpieza de malware</li><li>Actualizaciones críticas</li><li>Hardening básico</li></ul><div class="wp-block-buttons"><div class="wp-block-button btn-primary" data-action="open-popup"><a class="wp-block-button__link wp-element-button">Elegir Plata</a></div></div></div>
+    <div class="wp-block-column card" style="padding:20px;outline:1px solid rgba(45,212,191,.5)"><h3>Oro <span style="color:var(--teal)">$399</span></h3><p>24h + certificado + 1 mes monitoreo.</p><ul><li>Recuperación express &lt; 24h</li><li>Certificado de seguridad</li><li>Monitoreo 30 días</li></ul><div class="wp-block-buttons"><div class="wp-block-button btn-primary" data-action="open-popup"><a class="wp-block-button__link wp-element-button">Elegir Oro</a></div></div></div>
+  </div>
+  <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- TESTIMONIOS -->
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"},"className":"section-pad","anchor":"testimonios"} -->
+<div class="wp-block-group section-pad" id="testimonios">
+  <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+  <!-- wp:columns -->
+  <div class="wp-block-columns" style="margin-top:24px">
+    <div class="wp-block-column card" style="padding:16px">“Pensé que lo perdía todo. En menos de 12 horas mi tienda volvió a operar.” — Ana Gómez</div>
+    <div class="wp-block-column card" style="padding:16px">“Limpieza impecable y blindaje real. Bajó el spam y mejoró el PageSpeed.” — Carlos Ruiz</div>
+    <div class="wp-block-column card" style="padding:16px">“Me guiaron en todo. Claridad, rapidez y cero tecnicismos innecesarios.” — Lucía Pérez</div>
+  </div>
+  <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- FAQ -->
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"},"className":"section-pad faq","anchor":"faqs"} -->
+<div class="wp-block-group section-pad faq" id="faqs">
+  <h2 class="section-title">Preguntas frecuentes</h2>
+  <details><summary>¿Pueden recuperarlo en menos de 24h?</summary><div>El plan Oro prioriza tu caso (&lt;24h). Muchas recuperaciones se completan en 6–12h según la complejidad.</div></details>
+  <details><summary>¿Necesitan acceso al hosting?</summary><div>Sí, acceso a cPanel/Panel y WordPress. Trabajamos con copias y dejamos bitácora de cambios.</div></details>
+  <details><summary>¿Qué incluye el blindaje?</summary><div>Endurecimiento de login, permisos, firewall, revisión de plugins/temas y monitoreo si aplica.</div></details>
+  <details><summary>¿Ofrecen garantía?</summary><div>Si el problema persiste por la misma causa dentro de 7 días, intervenimos sin costo adicional.</div></details>
+</div>
+<!-- /wp:group -->
+
+<!-- CTA FINAL -->
+<!-- wp:group {"layout":{"type":"constrained","contentSize":"1200px"},"className":"section-pad"} -->
+<div class="wp-block-group section-pad">
+  <div class="wp-block-buttons"><div class="wp-block-button btn-primary" data-action="open-popup"><a class="wp-block-button__link wp-element-button">¡Contáctanos ahora!</a></div></div>
+</div>
+<!-- /wp:group -->
+
+<!-- POPUP HTML (se renderiza en el footer via WPCode JS) -->
+<div id="lp-popup" role="dialog" aria-modal="true" aria-hidden="true" style="display:none">
+  <div class="modal">
+    <button class="close-btn" data-action="close-popup">Cerrar</button>
+    <h3>Solicita ayuda ahora</h3>
+    <p class="text-muted">Completa el formulario y te contactamos en minutos.</p>
+    <div>[wpforms id="REEMPLAZA_CON_ID_DE_FORMULARIO" title="false" description="false"]</div>
+  </div>
+</div>
+
+<!-- FAB WhatsApp -->
+<div class="fab-wa"><a href="https://wa.me/527223818617?text=Hola%2C%20necesito%20recuperar%20mi%20sitio%20WordPress." aria-label="WhatsApp" target="_blank" rel="noopener">WA</a></div>
+
+<!-- POPUP-JS (pegar en WPCode FOOTER como snippet JS) -->
+<script>
+  (function(){
+    function open(){document.getElementById('lp-popup').classList.add('open');}
+    function close(){document.getElementById('lp-popup').classList.remove('open');}
+    document.addEventListener('click',function(e){
+      const t=e.target.closest('[data-action="open-popup"]');
+      const c=e.target.closest('[data-action="close-popup"]');
+      if(t){ e.preventDefault(); open(); }
+      if(c || e.target.id==='lp-popup'){ close(); }
+    });
+  })();
+</script>
+
+<!-- PLACEHOLDERS DE TRACKING: pegar en WPCode cuando tengas IDs -->
+<!-- Facebook Pixel Header: <script>/* TODO: FB Pixel base code con tu PIXEL_ID */</script> -->
+<!-- Google Ads Conversion Footer: <script>/* TODO: AW-CONVERSION_ID + send_to */</script> -->
+
+<!-- WPForms-JSON (importa en WPForms > Tools > Import) -->
+<script type="application/json" id="wpforms-template-json">{
+  "forms": [{
+    "id": 0,
+    "title": "Recuperaci\u00f3n WP 24h",
+    "fields": [
+      {"id": 1, "type": "text", "label": "Nombre", "required": true},
+      {"id": 2, "type": "email", "label": "Email", "required": true},
+      {"id": 3, "type": "text", "label": "Tel\u00e9fono", "required": true},
+      {"id": 4, "type": "url", "label": "URL del sitio", "required": true},
+      {"id": 5, "type": "select", "label": "Plan", "choices": [
+        {"label":"Bronce","value":"bronce"},
+        {"label":"Plata","value":"plata"},
+        {"label":"Oro","value":"oro"}
+      ], "required": true},
+      {"id": 6, "type": "select", "label": "Urgencia", "choices": [
+        {"label":"Inmediata (0-4h)","value":"4h"},
+        {"label":"Alta (24h)","value":"24h"},
+        {"label":"Media (48-72h)","value":"48-72h"}
+      ], "required": true},
+      {"id": 7, "type": "select", "label": "Canal preferido", "choices": [
+        {"label":"Email","value":"Email"},
+        {"label":"WhatsApp","value":"WhatsApp"},
+        {"label":"Llamada","value":"Llamada"}
+      ], "required": true},
+      {"id": 8, "type": "textarea", "label": "Mensaje", "required": true},
+      {"id": 9, "type": "checkbox", "label": "Consentimiento", "choices":[{"label":"Acepto ser contactado y la pol\u00edtica de privacidad","value":"si"}], "required": true}
+    ],
+    "settings": {"submit_text":"Enviar solicitud","notification_enable":"1","confirmations":[{"type":"message","message":"\u00a1Solicitud recibida! Te contactaremos pronto."}]}
+  }]}
+</script>

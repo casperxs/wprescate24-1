@@ -13,7 +13,8 @@ import { Label } from "../components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion";
 import { useToast } from "../hooks/use-toast";
-import { Shield, Zap, Wrench, Lock, AlertTriangle, Server, Gauge, ShieldAlert, Phone, Mail, Globe, CheckCircle2 } from "lucide-react";
+import { Shield, Zap, Wrench, Lock, AlertTriangle, Server, Gauge, ShieldAlert, Phone, Mail, Globe, CheckCircle2, MessageCircle } from "lucide-react";
+import { WHATSAPP_LINK } from "../config/contact";
 
 const schema = z.object({
   nombre: z.string().min(2, "Ingresa tu nombre"),
@@ -105,7 +106,10 @@ export default function Landing() {
             <NavLink href="#testimonios">Testimonios</NavLink>
             <NavLink href="#faqs">FAQ</NavLink>
           </nav>
-          <Button className="bg-teal-500 hover:bg-teal-400 text-black font-semibold" onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}>Contacto</Button>
+          <div className="flex items-center gap-2">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="hidden md:inline text-sm text-teal-300 hover:text-teal-200">WhatsApp</a>
+            <Button className="bg-teal-500 hover:bg-teal-400 text-black font-semibold" onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}>Contacto</Button>
+          </div>
         </div>
       </header>
 
@@ -296,7 +300,7 @@ export default function Landing() {
               </div>
               <div className="col-span-1">
                 <Label htmlFor="telefono">Teléfono</Label>
-                <Input id="telefono" placeholder="+34 600 000 000" {...register("telefono")} className="bg-black/40 border-white/15 text-white placeholder:text-foreground/50" />
+                <Input id="telefono" placeholder="+52 722 381 8617" {...register("telefono")} className="bg-black/40 border-white/15 text-white placeholder:text-foreground/50" />
                 {errors.telefono && <p className="text-red-400 text-xs mt-1">{errors.telefono.message}</p>}
               </div>
               <div className="col-span-1">
@@ -385,6 +389,13 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp */}
+      <a href={WHATSAPP_LINK} target="_blank" rel="noopener" aria-label="Abrir WhatsApp" className="fixed bottom-5 right-5 z-50 group">
+        <div className="h-14 w-14 rounded-full bg-teal-500 text-black flex items-center justify-center shadow-xl border border-teal-400/60 transition-colors hover:bg-teal-400">
+          <MessageCircle className="w-7 h-7" />
+        </div>
+      </a>
     </div>
   );
 }

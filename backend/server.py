@@ -40,6 +40,19 @@ class StatusCheckCreate(BaseModel):
 async def root():
     return {"message": "Hello World"}
 
+@api_router.get("/download/react-build")
+async def download_build():
+    try:
+        from fastapi.responses import FileResponse
+        zip_path = "/app/deploy/react-build/react-build-v1.zip"
+        if not os.path.exists(zip_path):
+            raise HTTPException(status_code=404, detail="ZIP no encontrado")
+        return FileResponse(zip_path, media_type="application/zip", filename="react-build-v1.zip")
+    except Exception as e:
+        logger.exception("Error sirviendo ZIP: %s", e)
+        raise HTTPException(status_code=500, detail="Error interno")
+
+
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
     status_dict = input.dict()

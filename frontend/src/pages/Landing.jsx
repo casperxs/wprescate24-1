@@ -59,11 +59,19 @@ export default function Landing() {
     if (planPrefill) setValue("plan", planPrefill);
   }, [planPrefill, setValue]);
 
-  // Auto-open suave al llegar a sección "problemas" (una sola vez por sesión)
+  // Auto-open suave al llegar a sección "problemas" (solo desktop y una vez por sesión)
   React.useEffect(() => {
     const already = sessionStorage.getItem("auto_popup_shown");
     const target = document.getElementById("problemas");
     if (!target || already) return;
+
+    const isDesktop = () => {
+      const wide = window.matchMedia("(min-width: 1024px)").matches;
+      const notCoarse = !window.matchMedia("(pointer: coarse)").matches; // evita móviles/tablets táctiles
+      return wide && notCoarse;
+    };
+    if (!isDesktop()) return;
+
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting && e.intersectionRatio > 0.25) {
@@ -201,7 +209,7 @@ export default function Landing() {
 
       {/* Proceso */}
       <section id="proceso" className="py-16">
-        <div className="max-w-6xl mx_auto px-6">
+        <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-white">Cómo trabajamos</h2>
           <p className="text-foreground/80 mt-2 max-w-2xl">Paso a paso: diagnóstico, recuperación, blindaje y prevención para que duermas tranquilo.</p>
           <div className="grid md:grid-cols-4 gap-4 mt-8">

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Link as RouterLink } from "react-router-dom";
-import { PRICING, PROBLEMS, PROCESS, STATS, TESTIMONIALS, FAQS } from "../mock/mock";
+import { PRICING, PROBLEMS, PROCESS, STATS, TESTIMONIALS, FAQS, HERO_IMAGES, TRUST_LOGOS } from "../mock/mock";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Input } from "../components/ui/input";
@@ -87,6 +87,8 @@ export default function Landing() {
     return <Icon className="w-5 h-5 text-teal-400" />;
   };
 
+  const heroImage = HERO_IMAGES[0];
+
   return (
     <div className="dark min-h-screen bg-[radial-gradient(ellipse_at_top_left,rgba(20,184,166,0.15)_0%,rgba(2,6,23,0)_40%),radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.12)_0%,rgba(2,6,23,0)_40%)]">
       {/* Header */}
@@ -97,6 +99,7 @@ export default function Landing() {
             <span className="font-semibold text-white">Rescate WP</span>
           </RouterLink>
           <nav className="hidden md:flex items-center gap-6">
+            <NavLink href="#problemas">Problemas</NavLink>
             <NavLink href="#proceso">Proceso</NavLink>
             <NavLink href="#pricing">Precios</NavLink>
             <NavLink href="#testimonios">Testimonios</NavLink>
@@ -130,24 +133,10 @@ export default function Landing() {
               <div className="flex items-center gap-2"><Lock className="w-4 h-4 text-teal-400" /> Endurecimiento de seguridad</div>
             </div>
           </div>
-          <Card className="bg-white/5 border-white/10 backdrop-blur-2xl">
-            <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2"><Wrench className="w-5 h-5 text-teal-300" /> Diagnóstico gratuito</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 gap-3 text-sm">
-                {PROBLEMS.map((p) => (
-                  <div key={p.title} className="flex items-start gap-2 p-3 rounded-lg bg-white/5 border border-white/10">
-                    <ProblemIcon name={p.icon} />
-                    <div>
-                      <div className="font-medium text-white">{p.title}</div>
-                      <div className="text-foreground/70 text-xs">{p.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          <div className="relative">
+            <div className="absolute -inset-3 bg-teal-500/20 rounded-3xl blur-2xl -z-10" aria-hidden />
+            <img src={heroImage} alt="Ilustración de ciberseguridad" loading="eager" className="w-full h-[360px] md:h-[440px] object-cover rounded-2xl border border-white/10 shadow-2xl" />
+          </div>
         </div>
       </section>
 
@@ -160,6 +149,26 @@ export default function Landing() {
               <div className="text-foreground/70 text-sm">{s.value}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Problemas */}
+      <section id="problemas" className="py-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white">¿Tu sitio presenta estos problemas?</h2>
+          <div className="grid md:grid-cols-4 gap-4 mt-6">
+            {PROBLEMS.map((p) => (
+              <Card key={p.title} className="bg-white/5 border-white/10 backdrop-blur-xl card-hover">
+                <CardContent className="p-4 flex items-start gap-3">
+                  <ProblemIcon name={p.icon} />
+                  <div>
+                    <div className="font-medium text-white">{p.title}</div>
+                    <div className="text-foreground/70 text-sm">{p.desc}</div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -216,6 +225,18 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Trust */}
+      <section className="py-10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center text-foreground/70 text-xs uppercase tracking-widest">Herramientas que usamos</div>
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-5 gap-3 items-center">
+            {TRUST_LOGOS.map(l => (
+              <div key={l.name} className="h-12 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xl flex items-center justify-center text-white/90 text-sm">{l.name}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section id="testimonios" className="py-16">
         <div className="max-w-6xl mx-auto px-6">
@@ -241,7 +262,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ + Contacto */}
       <section id="faqs" className="py-16">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-start">
           <div>
@@ -321,12 +342,12 @@ export default function Landing() {
                     <SelectItem value="Llamada">Llamada</SelectItem>
                   </SelectContent>
                 </Select>
-                {errors.canal &amp;&amp; <p className="text-red-400 text-xs mt-1">{errors.canal.message}</p>}
+                {errors.canal && <p className="text-red-400 text-xs mt-1">{errors.canal.message}</p>}
               </div>
               <div className="md:col-span-2 col-span-1">
                 <Label htmlFor="mensaje">Mensaje</Label>
                 <Textarea id="mensaje" rows={4} placeholder="Cuéntanos qué pasó, qué hosting usas y desde cuándo..." {...register("mensaje")} className="bg-black/40 border-white/15 text-white placeholder:text-foreground/50" />
-                {errors.mensaje &amp;&amp; <p className="text-red-400 text-xs mt-1">{errors.mensaje.message}</p>}
+                {errors.mensaje && <p className="text-red-400 text-xs mt-1">{errors.mensaje.message}</p>}
               </div>
               <div className="md:col-span-2 col-span-1 flex items-center gap-2">
                 <Checkbox id="consentimiento" {...register("consentimiento")} />

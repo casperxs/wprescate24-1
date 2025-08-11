@@ -32,7 +32,7 @@ export const PRICING = [
     description: "Recuperación 24h + certificado y monitoreo 1 mes",
     highlight: true,
     features: [
-      "Recuperación express &lt; 24h",
+      "Recuperación express < 24h",
       "Certificado de seguridad",
       "Monitoreo 24/7 por 30 días",
       "Lista negra: verificación y remoción"
@@ -85,7 +85,7 @@ export const TESTIMONIALS = [
 export const FAQS = [
   {
     q: "¿Pueden recuperarlo en menos de 24h?",
-    a: "El plan Oro prioriza tu caso para entregar en &lt; 24h. Muchas recuperaciones se completan en 6–12h según la complejidad."
+    a: "El plan Oro prioriza tu caso para entregar en < 24h. Muchas recuperaciones se completan en 6–12h según la complejidad."
   },
   {
     q: "¿Necesitan acceso al hosting?",
@@ -99,4 +99,20 @@ export const FAQS = [
     q: "¿Ofrecen garantía?",
     a: "Sí. Si el problema persiste por la misma causa dentro de 7 días, intervenimos sin costo adicional."
   }
+];
+
+// Ilustraciones del hero (seleccionadas por el asistente de imágenes)
+export const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1654783912259-659d94fff000",
+  "https://images.unsplash.com/photo-1623410439361-22ac19216577",
+  "https://images.pexels.com/photos/11167645/pexels-photo-11167645.jpeg"
+];
+
+// Logos de confianza (texto/placeholder para mock)
+export const TRUST_LOGOS = [
+  { name: "Wordfence" },
+  { name: "MalCare" },
+  { name: "Sucuri" },
+  { name: "Cloudflare" },
+  { name: "UpdraftPlus" }
 ];

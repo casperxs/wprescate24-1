@@ -59,6 +59,24 @@ export default function Landing() {
     if (planPrefill) setValue("plan", planPrefill);
   }, [planPrefill, setValue]);
 
+  // Auto-open suave al llegar a sección "problemas" (una sola vez por sesión)
+  React.useEffect(() => {
+    const already = sessionStorage.getItem("auto_popup_shown");
+    const target = document.getElementById("problemas");
+    if (!target || already) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && e.intersectionRatio > 0.25) {
+          sessionStorage.setItem("auto_popup_shown", "1");
+          setTimeout(() => setPopupOpen(true), 500);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+    obs.observe(target);
+    return () => obs.disconnect();
+  }, []);
+
   const onSubmit = (data) => {
     try {
       const lead = { ...data, createdAt: new Date().toISOString(), source: "landing-react-mock" };
@@ -183,7 +201,7 @@ export default function Landing() {
 
       {/* Proceso */}
       <section id="proceso" className="py-16">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx_auto px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-white">Cómo trabajamos</h2>
           <p className="text-foreground/80 mt-2 max-w-2xl">Paso a paso: diagnóstico, recuperación, blindaje y prevención para que duermas tranquilo.</p>
           <div className="grid md:grid-cols-4 gap-4 mt-8">

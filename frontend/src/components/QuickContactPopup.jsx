@@ -11,6 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Checkbox } from "../components/ui/checkbox";
 import { PRICING } from "../mock/mock";
 import { useToast } from "../hooks/use-toast";
+import { MessageCircle } from "lucide-react";
+import { WHATSAPP_LINK } from "../config/contact";
 
 const popupSchema = z.object({
   nombre: z.string().min(2, "Ingresa tu nombre"),
@@ -60,6 +62,16 @@ export default function QuickContactPopup({ open, onOpenChange, prefillPlan = ""
           <DialogTitle className="text-white">Solicita ayuda ahora</DialogTitle>
           <DialogDescription className="text-foreground/70">Completa los datos y nos pondremos en contacto en minutos.</DialogDescription>
         </DialogHeader>
+
+        {/* Badge de conversión con WhatsApp */}
+        <div className="mb-2 flex items-center gap-2 text-sm">
+          <div className="inline-flex items-center gap-2 rounded-full bg-teal-500/15 border border-teal-400/30 px-3 py-1 text-teal-200">
+            <MessageCircle className="w-4 h-4" />
+            <span>Atendemos por WhatsApp en minutos</span>
+          </div>
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="text-teal-300 hover:text-teal-200 underline-offset-2 hover:underline">Abrir WhatsApp</a>
+        </div>
+
         <form className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-3" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <Label htmlFor="q-nombre">Nombre</Label>
